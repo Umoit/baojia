@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use App\Country;
+
+class CountryController extends Controller
+{
+    public function index(){
+        $countries = Country::all();
+
+    	return view('admin.countryList',compact('countries'));
+    }
+
+    public function store(Request $request){
+
+        //dd($request['tags']);
+        
+        $data = $this->validate($request, [
+            'name'=>'required',
+            'code'=> 'required',
+
+        ]);
+
+
+
+         Country::create($data);
+
+
+
+    	
+        return redirect()->back()->with(['flash_success' => '添加成功!']);
+
+
+    }
+
+        public function delete($id){
+        $country = Country::findOrFail($id);
+        $country->delete();
+        //return redirect('admin/product')->with(['flash_success' => '删除产品成功!']);
+        
+        //return response()->json(['data'=>'删除成功！']);
+        return redirect()->back()->with(['flash_success' => '删除成功!']);
+
+
+    }
+}
