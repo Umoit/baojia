@@ -15,6 +15,11 @@ class CountryController extends Controller
     	return view('admin.countryList',compact('countries'));
     }
 
+    public function edit(Country $country){
+        return view('admin.countryEdit',compact('country'));
+
+    }
+
     public function store(Request $request){
 
         //dd($request['tags']);
@@ -37,7 +42,31 @@ class CountryController extends Controller
 
     }
 
-        public function delete($id){
+    public function update(Request $request,$id){
+     
+
+        //dd($request);
+        $data = $this->validate($request, [
+            'name'=>'required',
+            'code'=> 'required'
+        ]);
+       
+
+
+
+
+        $country = Country::findOrFail($id);
+        $country->update($data);
+        
+
+        return redirect()->back()->with(['flash_success' => '更新成功!']);
+        
+
+    }
+
+
+
+    public function delete($id){
         $country = Country::findOrFail($id);
         $country->delete();
         //return redirect('admin/product')->with(['flash_success' => '删除产品成功!']);

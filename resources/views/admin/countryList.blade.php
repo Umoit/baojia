@@ -117,7 +117,7 @@
               <td>{{$data->code}}</td>
             
               <td>
-                <a target="_blank" href="{{route('country.show',$data->id)}}"><button type="button" class="btn btn-success btn-xs">查看</button></a>
+                <a target="_blank" href="{{route('offer.check')}}?country_id={{$data->id}}"><button type="button" class="btn btn-success btn-xs">查看</button></a>
                 <a href="{{route('country.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
                 
                  <a onclick="showDeleteModal(this)"  data="{{route('country.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>

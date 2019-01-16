@@ -95,6 +95,7 @@ class ExcelController extends Controller
         $path = $request->file('import_file')->getRealPath();
         $data = Excel::load($path)->get();
 
+        dd($data);
 
         if($data->count()){
             foreach ($data as $key => $value) {
@@ -109,7 +110,7 @@ class ExcelController extends Controller
           
         }
  
-        return back()->with('success', 'Insert Record successfully.');
+         return back()->with('flash_success', '导入成功.');
 
 
 

@@ -29,8 +29,37 @@ class OfferController extends Controller
     }
 
     public function getCheck(Request $request){
-    	dd($request);
-    	echo "string";exit();
+        //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
+    	$sections = Offer::where('country_id',$request->get('country_id'))->get()->groupBy('country_id');
+    	//dd($sections);
+        $countries = Country::all();
+
+    	return view('admin.offerList',compact('countries','sections'));
+
+
+    }
+
+    public function store(Request $request){
+        $arr['country_id'] = $request->post('country_id');
+
+        foreach ($request->post() as $key => $value) {
+            if($key=='country_id'||$key=="_token"){
+                continue;
+            }
+            $arr['weight'] = $key;
+            $arr['price'] = $value;
+            $arr['type'] = 1;
+            $arr['description'] = 'des';
+
+            try{
+                Offer::updateOrCreate($arr);
+            }catch (Exception $e) {  
+                echo 'Caught exception: ',  $e->getMessage(),'<br>';  
+            }  
+
+            
+        }
+        return back()->with('flash_success', '添加成功.');
 
     }
 

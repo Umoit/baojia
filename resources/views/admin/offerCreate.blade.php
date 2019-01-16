@@ -16,14 +16,6 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 .table > tbody > tr > th, .table > tfoot > tr > th, .table > tbody > tr > td, .table > tfoot > tr > td{
   border-left: 1px solid #eaeff0;
 }
-@media (min-width: 768px){
-.modal-dialog {
-    width: 1200px;
-    margin: 30px auto;
-}
-.table_input input{
-  width: 50px;
-}
 </style>
 
 <div class="bg-light lter b-b wrapper-md">
@@ -33,7 +25,7 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
           <h1 class="m-n font-thin h3">报价管理</h1>
         </div>
            <div class="col-sm-6 text-right hidden-xs">
-                <button type="button" class="btn btn-success " data-toggle="modal" data-target="#addModal">添加报价</button>
+                <a class="btn btn-success" href="{{route('offer.create')}}">添加报价</a>
                 <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">批量添加报价</button>
               <button type="button" class="btn  btn-info  "><a target="_blank" href="">导出报价</a></button>
 
@@ -93,8 +85,8 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 
         <tr>
         <th></th>
-        <th colspan="2">文件</th>
-        <th colspan="13">小包裹</th>
+        <th colspan="3">文件</th>
+        <th colspan="12">小包裹</th>
         <th colspan="8">大包裹</th>
         </tr>
         @if(is_null($sections))
@@ -223,125 +215,9 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
             
         </form>
       </div>
-      <div class="modal-footer bulkCreateOffer">
+      <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         <button type="button" class="btn btn-primary submit" >提交</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- add Modal -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">填写</h4>
-      </div>
-      <div class="modal-body">
-        <form enctype="multipart/form-data"  id="offerAdd" class="form-horizontal" method="post" action="{{route('offer.store')}}">
-          
-
-        
-      
-            <div class="form-group">
-  <div class="table-responsive">
-      <table class="table table-striped b-t b-light">
-        <thead>
-
-        <tr>
-        <th></th>
-        <th colspan="2">文件</th>
-        <th colspan="13">小包裹</th>
-        <th colspan="7">大包裹</th>
-        </tr>
-                       
-
-        <tr>
-        <th>国家</th>
-        <th>首_0.5kg</th>
-        <th>续_0.5kg</th>
-        <th>1kg</th>
-        <th>1.5kg</th>
-        <th>2kg</th>
-        <th>2.5kg</th>
-        <th>3kg</th>
-        <th>3.5kg</th>
-        <th>4kg</th>
-        <th>4.5kg</th>
-        <th>5kg</th>
-        <th>首_5.5kg</th>
-        <th>续_6_10kg</th>
-        <th>首_10.5kg</th>
-        <th>续_11_20.5kg </th>
-        <th>21_30kg</th>
-        <th>31_49kg</th>
-        <th>50_69kg</th>
-        <th>70_100kg</th>
-        <th>101_200kg</th>
-        <th>201_299kg</th>
-        <th>300_500kg</th>
-
-        </tr>
-        </thead>
-        
-        <tbody>
-                        
-        <tr class="table_input">
-        <td>
-            <select name ="country_id" class="input-sm form-control w-sm inline v-middlec">
-            @foreach($countries as $country)
-
-              <option   value="{{$country->id}}" @if($country->id == Request::get('country_id'))  selected = "selected" @endif >{{$country->code}}_{{$country->name}}</option>
-                
-            @endforeach
-
-            </select>
-        </td>
-        <td><input type="text" name="first_0.5kg"></td>
-        <td><input type="text" name="con_0.5kg"></td>
-        <td><input type="text" name="1kg"></td>
-        <td><input type="text" name="1.5kg"></td>
-        <td><input type="text" name="2kg"></td>
-        <td><input type="text" name="2.5kg"></td>
-        <td><input type="text" name="3kg"></td>
-        <td><input type="text" name="3.5kg"></td>
-        <td><input type="text" name="4kg"></td>
-        <td><input type="text" name="4.5kg"></td>
-        <td><input type="text" name="5kg"></td>
-        <td><input type="text" name="first_5.5kg"></td>
-        <td><input type="text" name="con_6_10kg"></td>
-        <td><input type="text" name="first_10.5kg"></td>
-        <td><input type="text" name="con_11_20.5kg"></td>
-        <td><input type="text" name="21_30kg"></td>
-        <td><input type="text" name="31_49kg"></td>
-        <td><input type="text" name="50_69kg"></td>
-        <td><input type="text" name="70_100kg"></td>
-        <td><input type="text" name="101_200kg"></td>
-        <td><input type="text" name="201_299kg"></td>
-        <td><input type="text" name="300_500kg"></td>
-
-        </tr>
-
-                             
-          
-
-        </tbody>
-      </table>
-    </div>
-            </div>
-
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            
-            
-        </form>
-      </div>
-      <div class="modal-footer offerAdd">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button type="submit" class="btn btn-primary" form="offerAdd" >提交</button>
-
       </div>
     </div>
   </div>
@@ -369,7 +245,7 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 
 
     
-    $('.bulkCreateOffer .submit').click(function(){
+    $('.modal-footer .submit').click(function(){
       $("#bulkCreateOffer").submit();
     })
     $('.offerCheck.submit').click(function(){

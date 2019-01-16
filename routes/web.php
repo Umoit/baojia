@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::get('offer/{id}/delete', 'Admin\OfferController@delete')->name('offer.delete');	
 	Route::post('offer/import', 'Admin\ExcelController@offerImport')->name('offer.import');
 
-	Route::get('offer/check/{$a?}', 'Admin\OfferController@getCheck')->name('offer.check');
+	Route::get('offerCheck/{data?}', 'Admin\OfferController@getCheck')->name('offer.check');
 
 	
 
@@ -65,7 +65,7 @@ Route::group(['prefix' => 'admin'],function(){
 	//国家
 	Route::resource('country','Admin\CountryController');
 	Route::get('country/{id}/delete', 'Admin\CountryController@delete')->name('country.delete');
-	Route::get('country/import', 'Admin\ExcelController@countryImport')->name('country.import');
+	Route::post('country/import', 'Admin\ExcelController@countryImport')->name('country.import');
 
 
 
