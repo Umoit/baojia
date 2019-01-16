@@ -14,7 +14,8 @@ use App\Offer;
 class ExcelController extends Controller
 {
     public function __construct(){
-        $this->middleware('check.admin']);
+        //
+        $this->middleware('check.admin');
     }
     
 
