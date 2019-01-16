@@ -95,7 +95,6 @@ class ExcelController extends Controller
         $path = $request->file('import_file')->getRealPath();
         $data = Excel::load($path)->get();
 
-        dd($data);
 
         if($data->count()){
             foreach ($data as $key => $value) {
