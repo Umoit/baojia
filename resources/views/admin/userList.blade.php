@@ -15,11 +15,7 @@
           </div>
 
 
-         <div class="col-sm-6 text-right hidden-xs">
-              <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">批量添加国家</button>
-            <button type="button" class="btn  btn-info  "><a target="_blank" href="{{route('country.clear')}}">清空所有</a></button>
-
-          </div>
+      
     </div>
 
 
@@ -32,21 +28,27 @@
         <div class="panel panel-default">
         <div class="panel-heading ">添加国家</div>
         <div class="panel-body">
-          <form class="form-horizontal"  action="{{route('country.store')}}" method="post" role="form">
+          <form class="form-horizontal"  action="{{route('user.store')}}" method="post" role="form">
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">名称</label>
                 <div class="col-sm-9">
-                    <input type="text" name="name" class="form-control" placeholder="目录名称">
+                    <input type="text" name="name" class="form-control" placeholder="名称">
                 </div>
             </div>
             
+            <div class="form-group">
+                <label class="col-sm-3 control-label">邮件</label>
+                <div class="col-sm-9">
+                    <input type="text" name="email" class="form-control" placeholder="邮件">
+                </div>
+            </div>
 
 
             <div class="form-group">
-                <label class="col-sm-3 control-label">国家代码</label>
+                <label class="col-sm-3 control-label">密码</label>
                 <div class="col-sm-9">
-                <input type="text" name="code" class="form-control" placeholder="目录url名称">
+                <input type="text" name="password" class="form-control" placeholder="密码">
                 </div>
             </div>
 
@@ -101,7 +103,7 @@
               </label>
             </th>
             <th>名称</th>
-            <th>代码</th>
+            <th>邮箱</th>
             <th>操作</th>
     
           </tr>
@@ -109,18 +111,17 @@
         <tbody>
           
           
-           @foreach ($countries as $data)
+           @foreach ($users as $data)
 
               <tr>
               <td>{{$data->id}}</td>
               <td>{{$data->name}}</td>
-              <td>{{$data->code}}</td>
+              <td>{{$data->email}}</td>
             
               <td>
-                <a target="_blank" href="{{route('offer.check')}}?country_id={{$data->id}}"><button type="button" class="btn btn-success btn-xs">查看</button></a>
-                <a href="{{route('country.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
+                <a href="{{route('user.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
                 
-                 <a onclick="showDeleteModal(this)"  data="{{route('country.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
+                 <a onclick="showDeleteModal(this)"  data="{{route('user.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
               </td>
             </tr>
             @endforeach

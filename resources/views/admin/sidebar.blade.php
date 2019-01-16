@@ -58,7 +58,6 @@
           <nav id="left-nav" class="navi clearfix">
             <ul class="nav">
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>aa</span>
               </li>
               <li class="{{ Request::is('admin/dashboard*') ? 'active' : '' }}">
                 <a href class="auto">      
@@ -70,13 +69,7 @@
                 </a>
                 
               </li>
-              <li>
-                <a href="mail.html">
-                  <b class="badge bg-info pull-right">9</b>
-                  <i class="fa fa-snowflake-o"></i>
-                  <span class="font-bold">Email</span>
-                </a>
-              </li>
+              <li></li>
               <li class="line dk"></li>
 
         
@@ -106,11 +99,7 @@
                       <span>国家列表</span>
                     </a>
                   </li>
-                  <li class="{{ Request::is('admin/offer/*') ? 'active' : '' }}">
-                    <a href="{{route('offer.create')}}">
-                      <span>添加报价</span>
-                    </a>
-                  </li>
+              
                
 
                       
@@ -120,13 +109,12 @@
 
              
 
-               <li class="">
+               <li class="{{ Request::is('admin/user') ? 'active' : '' }}">
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="badge bg-info pull-right">3</b>
                   <i class="fa fa-list"></i>
                   <span>会员系统</span>
                 </a>
@@ -136,8 +124,8 @@
                       <span>会员系统</span>
                     </a>
                   </li>
-                   <li class="">
-                    <a href="">
+                   <li class="{{ Request::is('admin/user') ? 'active' : '' }}">
+                    <a href="{{route('user.index')}}">
                       <span>会员列表</span>
                     </a>
                   </li>

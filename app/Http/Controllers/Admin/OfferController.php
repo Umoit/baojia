@@ -12,6 +12,10 @@ use Event;
 
 class OfferController extends Controller
 {
+    public function __construct(){
+        $this->middleware('check.admin', ['except' => ['show','index','getCheck']]);
+    }
+
     public function index(){
         $offers = Offer::orderBy('id', 'desc')->paginate(50);
 

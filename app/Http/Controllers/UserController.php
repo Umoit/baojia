@@ -31,12 +31,14 @@ class UserController extends Controller
             'captcha.required' => '验证码不能为空',
             'captcha.captcha' => '验证码不正确',
         ]);
-        
-    	if (Auth::attempt(['email'=>$request->email,'password'=>$request->password])) {
-   			return redirect()->intended(route('home'));
+    	if (Auth::guard('web')->attempt(['email'=>$request->email,'password'=>$request->password])) {
+   			return redirect()->intended(route('admin.dashboard'));
    		}else{
-   			return redirect(route('login'))->with(['flash_danger' => '账号密码错误!']);
+   			//return redirect(route('home'))->with(['flash_danger' => '账号密码错误!']);
+            return back()->withErrors(['账号密码错误']);
    		}
+
+
     }
 
 

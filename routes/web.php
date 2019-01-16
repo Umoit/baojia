@@ -24,7 +24,7 @@ Route::post('login','UserController@postLogin')->name('post.login');
 Route::get('register','UserController@getRegister')->name('register');
 Route::post('register','UserController@postRegister')->name('post.register');
 //用户
-Route::resource('user', 'UserController', ['only' => ['show', 'update', 'edit']]);
+//Route::resource('user', 'UserController', ['only' => ['show', 'update', 'edit']]);
 
 Route::get('logout', 'UserController@logout')->name('logout');
 
@@ -44,7 +44,7 @@ Route::post('admin/login','Admin\IndexController@postLogin')->name('admin.login'
 
 Route::group(['prefix' => 'admin'],function(){
 
-	Route::get('logout','Admin\IndexController@logout');
+	Route::get('logout','Admin\IndexController@logout')->name('admin.logout');
 	
 	Route::get('test','Admin\IndexController@test')->name('admin.test');
 
@@ -66,9 +66,15 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::resource('country','Admin\CountryController');
 	Route::get('country/{id}/delete', 'Admin\CountryController@delete')->name('country.delete');
 	Route::post('country/import', 'Admin\ExcelController@countryImport')->name('country.import');
+	Route::get('countryClear', 'Admin\CountryController@clearCountry')->name('country.clear');
 
 
+	//用户
+	Route::resource('user', 'Admin\UserController');	
+	Route::get('user/{id}/delete', 'Admin\UserController@delete')->name('user.delete');	
+	//Route::post('user/login', 'UserController@postLogin')->name('user.login');	
 
+	
 
 
 

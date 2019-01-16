@@ -9,6 +9,12 @@ use App\Country;
 
 class CountryController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('check.admin', ['except' => ['show','index']]);
+    }
+
+
     public function index(){
         $countries = Country::all();
 
@@ -75,5 +81,11 @@ class CountryController extends Controller
         return redirect()->back()->with(['flash_success' => '删除成功!']);
 
 
+    }
+
+    public function clearCountry(){
+        Country::truncate();
+        return redirect()->back()->with(['flash_success' => '删除成功!']);
+        
     }
 }

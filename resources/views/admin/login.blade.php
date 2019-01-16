@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>layout 后台大布局 - Layui</title>
+  <title>管理员登录</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -26,10 +26,10 @@
   
 
 <div class="container w-xxl w-auto-xs">
-  <a href class="navbar-brand block m-t">{{ config('app.name')}}</a>
+  <a href class="navbar-brand block m-t">后台系统</a>
   <div class="m-b-lg">
     <div class="wrapper text-center">
-      <strong>App后台管理系统</strong>
+      <strong>管理员登录</strong>
     </div>
     <form name="form" class="form-validation" method="post" action="{{route('admin.login')}}">
       <div class="text-danger wrapper text-center" >
