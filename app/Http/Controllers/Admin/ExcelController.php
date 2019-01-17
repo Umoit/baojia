@@ -49,20 +49,24 @@ class ExcelController extends Controller
         $path = $request->file('import_file')->getRealPath();
         $data = Excel::load($path)->get();
 
-     
+        
 
     
         if($data->count()){
             foreach ($data as $key => $value) {
                 //dd($data);
+                
+                
                 $country_id =  Country::getCountryId($value['code']);
                
                 $arr = [];
 
                 $res = $value->toArray();
                 
+
+                //dd($res);
                 foreach ($res as $k => $v ) {
-                    if ($k=='name'||$k=='code') {
+                    if ($k=='name'||$k=='code'||$k=='country') {
                         continue;
                     }
                     $arr['weight'] = $k;
@@ -70,6 +74,7 @@ class ExcelController extends Controller
                     $arr['type'] = 1;
                     $arr['country_id'] = $country_id[0];
                     $arr['description'] = "des";
+                    $arr['name'] =  $value['name'];
 
 
                     try{

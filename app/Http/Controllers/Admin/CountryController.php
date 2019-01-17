@@ -11,7 +11,7 @@ class CountryController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('check.admin', ['except' => ['show','index']]);
+        $this->middleware('check.admin');
     }
 
 

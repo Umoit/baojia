@@ -100,9 +100,12 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
         @if(is_null($sections))
          <tr><th>没有找到对应报价</th></tr>
          @endif
-               @foreach ($sections as  $data)
 
+         @foreach ($sections as $key => $sec)
+              <tr><th>{{$key}}</th></tr>
 
+               @foreach ($sec as $key => $data)
+            
                       <tr>
                         <th >
                             <div style="width:120px;">
@@ -112,7 +115,7 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
                       
                       @foreach($data as $item)
                         <th>
-
+                        
                         
                         @if( strstr($item->weight, '_', TRUE)=="first")
                         首{{strstr($item->weight, '_')}}
@@ -132,29 +135,35 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 
                       </tr>
                     @endforeach
+
+
+
          
         </thead>
         <tbody>
-
-                  @foreach ($sections as $data)
+          
+                  @foreach ($sec as  $data)
       
                       <tr>
 
-                      <td >{{App\Country::getName($data[0]->country_id)[0]}}</td>
+                       <td >{{App\Country::getName($data[0]->country_id)[0]}}</td>
                       
                       @foreach($data as $item)
-                        <td>{{$item->price}}</td>
-                     
+                         
+                          <td>{{$item->price}}</td>
+                         
                         
                       @endforeach
 
                       </tr>
                     @endforeach
          
-          
+         
 
          
         </tbody>
+              @endforeach
+
       </table>
     </div>
     <footer class="panel-footer">

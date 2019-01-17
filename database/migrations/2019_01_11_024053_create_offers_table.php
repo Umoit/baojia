@@ -18,8 +18,10 @@ class CreateOffersTable extends Migration
             $table->integer('country_id');
             $table->string('weight');
             $table->string('price');
-            $table->integer('type');
-            $table->text('description');
+            $table->integer('type')->nullable();
+            $table->text('description')->nullable();
+            $table->string('name');
+            $table->string('destination')->nullable();
             $table->timestamps();
         });
     }
