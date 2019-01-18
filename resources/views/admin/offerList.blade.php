@@ -2,16 +2,25 @@
 
 @section('content')
 
+@section('before-body')
+
+  <link rel="stylesheet" href="/admin/select/bootstrap-select.min.css"  media="all">
+
+@endsection
+
+
+
+
 <style type="text/css">
 .table > thead > tr > th{
 
     text-align: center;
     border-left: 1px solid #eaeff0;
     width:100%;
-word-break:keep-all;             /* 不换行 */
-white-space:nowrap;            /* 不换行 */
-overflow:hidden;                  /* 内容超出宽度时隐藏超出部分的内容 */
-text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    word-break:keep-all;             /* 不换行 */
+    white-space:nowrap;            /* 不换行 */
+    overflow:hidden;                  /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
 }
 .table > tbody > tr > th, .table > tfoot > tr > th, .table > tbody > tr > td, .table > tfoot > tr > td{
   border-left: 1px solid #eaeff0;
@@ -24,6 +33,14 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 .table_input input{
   width: 50px;
 }
+
+.inner .active .active .check-mark{
+  display: inline-block;
+}
+.inner .active .active .text{
+  display: inline-block!important;
+}
+
 </style>
 
 <div class="bg-light lter b-b wrapper-md">
@@ -55,17 +72,28 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 
         <form  id="offerCheck"  method="get" class="form-horizontal" action="{{route('offer.check')}}">
         <div class="col-md-3">
-          <select name ="country_id" class="input-sm form-control w-sm inline v-middlec">
+          <select name ="country_id" class="input-sm form-control w-sm  selectpicker inline v-middlec" data-live-search="true">
             @foreach($countries as $country)
 
-              <option   value="{{$country->id}}" @if($country->id == Request::get('country_id'))  selected = "selected" @endif >{{$country->code}}_{{$country->name}}</option>
+              <option  data-tokens="{{$country->name}}" value="{{$country->id}}" @if($country->id == Request::get('country_id'))  selected = "selected" @endif >{{$country->code}}_{{$country->name}}</option>
                 
             @endforeach
 
             </select>
+
+
         </div>
+
+
+
         <div class="col-md-3"> <input type="number" name="weight" class="input-sm form-control" placeholder="重量">
         </div>
+
+
+
+
+
+
         <div class="col-md-3"><button class="btn btn-sm btn-default submit" >查询</button></div>
         
           
@@ -89,20 +117,24 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
     </div>
     <div class="table-responsive">
       <table class="table table-striped b-t b-light">
-        <thead>
 
+        <thead>   
         <tr>
         <th></th>
         <th colspan="2">文件</th>
         <th colspan="13">小包裹</th>
         <th colspan="8">大包裹</th>
-        </tr>
+        </tr></thead>
+      @foreach ($sections as $key => $sec)
+              <tr><th>{{$key}}</th></tr>
+        <thead>
+
+     
         @if(is_null($sections))
          <tr><th>没有找到对应报价</th></tr>
          @endif
 
-         @foreach ($sections as $key => $sec)
-              <tr><th>{{$key}}</th></tr>
+         
 
                @foreach ($sec as $key => $data)
             
@@ -388,4 +420,6 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 
 
   </script>
+  <script src="{{asset('admin/select/bootstrap-select.min.js') }}"></script>
+
 @endsection 
