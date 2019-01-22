@@ -22,6 +22,7 @@ class CreateOffersTable extends Migration
             $table->text('description')->nullable();
             $table->string('name');
             $table->string('destination')->nullable();
+            $table->string('name_des')->nullable();
             $table->timestamps();
         });
     }

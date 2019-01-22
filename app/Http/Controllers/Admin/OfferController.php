@@ -24,11 +24,15 @@ class OfferController extends Controller
         
         $sec = DB::table('countries')->join('offers','countries.id','=','offers.country_id')->get()->groupBy('name');
 
+        $sections[] = '';
         foreach ($sec as $key => $value) {
             $sections[$key] = $value->groupBy('country_id');
         }
+        
+        
+        
   
-      //  dd($sections);
+      
        
         $countries = Country::all();
 
@@ -38,19 +42,16 @@ class OfferController extends Controller
 
     public function getCheck(Request $request){
         //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
-    	$sec = Offer::where('country_id',$request->get('country_id'))->get()->groupBy('name');
-    	
-        dd($sec);
-
+    	$sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->get()->groupBy('name');
         foreach ($sec as $key => $value) {
             $sections[$key] = $value->groupBy('country_id');
         }
-        //dd($sections);
+
 
 
         $countries = Country::all();
 
-    	return view('admin.offerList',compact('countries','sections'));
+    	return view('admin.offerCheckList',compact('countries','sections'));
 
 
     }

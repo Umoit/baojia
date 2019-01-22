@@ -16,11 +16,13 @@
 
     text-align: center;
     border-left: 1px solid #eaeff0;
-    width:100%;
     word-break:keep-all;             /* 不换行 */
     white-space:nowrap;            /* 不换行 */
     overflow:hidden;                  /* 内容超出宽度时隐藏超出部分的内容 */
     text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+tr td {
+  text-align: center;
 }
 .table > tbody > tr > th, .table > tfoot > tr > th, .table > tbody > tr > td, .table > tfoot > tr > td{
   border-left: 1px solid #eaeff0;
@@ -86,7 +88,7 @@
 
 
 
-        <div class="col-md-3"> <input type="number" name="weight" class="input-sm form-control" placeholder="重量">
+        <div class="col-md-3"> <input type="number" name="weight" value="@if(Request::get('weight')){{Request::get('weight')}}@endif" class="input-sm form-control" placeholder="重量">
         </div>
 
 
@@ -119,15 +121,70 @@
 
 
       <table class="table table-striped b-t b-light">
+     
 
-      
 
+          @if(count($sections)>0)
 
+          @else
           <tr><th>没有找到对应报价</th></tr>
 
-        
+          @endif
 
+           @foreach ($sections as $key => $sec)
+           <thead><tr><th style="text-align:left">{{$key}}</th></tr></thead>
+
+                 <thead>
+                 @foreach ($sec as  $data)
+            
+                      <tr>
+                        <th>渠道名称</th>
+                        <th>报价名称</th>
+                        <th>目的地</th>
+                        <th>结算重量</th>
+                        <th>价格</th>
+                      </tr>
+                    @endforeach
+
+                  </thead>
+
+
+
+
+
+
+
+        
     
+   
+        <tbody>
+          
+                  @foreach ($sec as  $data)
+
+      
+                      <tr>
+                      <td>{{$key}}</td>
+                      <td>{{$key}}</td>
+                      <td>{{$key}}</td>
+
+                       <td >{{App\Country::getName($data[0]->country_id)[0]}}</td>
+                      
+                      @foreach($data as $item)
+                         
+                          <td>{{$item->price}}</td>
+                         
+                        
+                      @endforeach
+
+                      </tr>
+                    @endforeach
+         
+         
+
+         
+        </tbody>
+              @endforeach
+
 
         
 

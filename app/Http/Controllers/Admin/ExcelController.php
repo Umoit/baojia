@@ -50,15 +50,15 @@ class ExcelController extends Controller
         $data = Excel::load($path)->get();
 
         
-
     
         if($data->count()){
             foreach ($data as $key => $value) {
-                //dd($data);
+                // dd($data);
                 
                 
                 $country_id =  Country::getCountryId($value['code']);
                
+                
                 $arr = [];
 
                 $res = $value->toArray();
@@ -66,15 +66,20 @@ class ExcelController extends Controller
 
                 //dd($res);
                 foreach ($res as $k => $v ) {
-                    if ($k=='name'||$k=='code'||$k=='country') {
+                    if ($k=='name'||$k=='code'||$k=='country'||$k=='name_des') {
                         continue;
                     }
                     $arr['weight'] = $k;
                     $arr['price'] = $v;
                     $arr['type'] = 1;
-                    $arr['country_id'] = $country_id[0];
+                    if (isset( $country_id)) {
+                        $arr['country_id'] = $country_id[0];
+                    }
+                    $arr['country_id'] = 185;
+
                     $arr['description'] = "des";
                     $arr['name'] =  $value['name'];
+                    $arr['name_des'] =  $value['name_des'];
 
 
                     try{
