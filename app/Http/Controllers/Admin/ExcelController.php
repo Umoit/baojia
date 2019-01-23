@@ -11,6 +11,8 @@ use App\Article;
 use App\Country;
 use App\Offer;
 
+use App\Jobs\ProcessOffer;
+
 class ExcelController extends Controller
 {
     public function __construct(){
@@ -72,21 +74,18 @@ class ExcelController extends Controller
                     $arr['weight'] = $k;
                     $arr['price'] = $v;
                     $arr['type'] = 1;
-                    if (isset( $country_id)) {
+                    
+                    $arr['country_id'] = 185;
+                    if (count( $country_id)>0) {
                         $arr['country_id'] = $country_id[0];
                     }
-                    $arr['country_id'] = 185;
 
                     $arr['description'] = "des";
                     $arr['name'] =  $value['name'];
                     $arr['name_des'] =  $value['name_des'];
 
-
-                    try{
-                        Offer::updateOrCreate($arr);
-                    }catch (Exception $e) {  
-                        echo 'Caught exception: ',  $e->getMessage(),'<br>';  
-                    }  
+                    //ProcessOffer::dispatch($arr);
+                    $this->dispatch(new ProcessOffer($arr));
 
                 }
 
