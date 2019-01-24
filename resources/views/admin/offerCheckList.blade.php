@@ -140,7 +140,7 @@
                   </thead>
 
            @foreach ($sections as $key => $sec)
-           <thead><tr><th style="text-align:left;text-transform:Uppercase"><h3>{{$key}}</h3></th></tr></thead>
+           <thead><tr><th style="text-align:left;text-transform:Uppercase"><h4>{{$key}}</h4></th></tr></thead>
 
                 
 
