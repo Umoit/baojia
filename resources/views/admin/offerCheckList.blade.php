@@ -133,7 +133,7 @@
            <thead><tr><th style="text-align:left">{{$key}}</th></tr></thead>
 
                  <thead>
-                 @foreach ($sec as  $data)
+               
             
                       <tr>
                         <th>渠道名称</th>
@@ -142,7 +142,7 @@
                         <th>结算重量</th>
                         <th>价格</th>
                       </tr>
-                    @endforeach
+
 
                   </thead>
 
@@ -157,25 +157,23 @@
    
         <tbody>
           
-                  @foreach ($sec as  $data)
-
-      
-                      <tr>
-                      <td>{{$key}}</td>
-                      <td>{{$key}}</td>
-                      <td>{{$key}}</td>
-
-                       <td >{{App\Country::getName($data[0]->country_id)[0]}}</td>
-                      
-                      @foreach($data as $item)
+                @foreach ($sec as  $data)
+                    
+                    @foreach($data as $item)
                          
-                          <td>{{$item->price}}</td>
+                         <tr>
+                         <td>{{$item->name}}</td>
+                         <td>{{$item->name_des}}</td>
+                         <td>{{App\Country::getName($data[0]->country_id)[0]}}</td>
+                         <td>{{Request::get('weight')}}</td>
+                         <td>{{round($item->price,2)}}</td>
+
+                         </tr>
                          
                         
                       @endforeach
 
-                      </tr>
-                    @endforeach
+                @endforeach
          
          
 
