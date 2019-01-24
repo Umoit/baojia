@@ -13,7 +13,6 @@
 
 <style type="text/css">
 .table > thead > tr > th{
-
     text-align: left;
     border-left: 1px solid #eaeff0;
     word-break:keep-all;             /* 不换行 */
@@ -21,7 +20,6 @@
     overflow:hidden;                  /* 内容超出宽度时隐藏超出部分的内容 */
     text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
 }
-
 .table > tbody > tr > th, .table > tfoot > tr > th, .table > tbody > tr > td, .table > tfoot > tr > td{
   border-left: 1px solid #eaeff0;
 }
@@ -33,14 +31,12 @@
 .table_input input{
   width: 50px;
 }
-
 .inner .active .active .check-mark{
   display: inline-block;
 }
 .inner .active .active .text{
   display: inline-block!important;
 }
-
 </style>
 
 <div class="bg-light lter b-b wrapper-md">
@@ -86,7 +82,8 @@
 
 
 
-        <div class="col-md-3"> <input type="number" name="weight" value="@if(Request::get('weight')){{Request::get('weight')}}@endif" class="input-sm form-control" placeholder="重量">
+        <div class="col-md-3"> 
+        <input type="number" name="weight" value="@if(Request::get('weight')){{Request::get('weight')}}@endif" class="input-sm form-control" placeholder="重量">
         </div>
 
 
@@ -128,11 +125,7 @@
           <tr><th>没有找到对应报价</th></tr>
 
           @endif
-
-           @foreach ($sections as $key => $sec)
-           <thead><tr><th style="text-align:left">{{$key}}</th></tr></thead>
-
-                 <thead>
+           <thead>
                
             
                       <tr>
@@ -145,6 +138,11 @@
 
 
                   </thead>
+
+           @foreach ($sections as $key => $sec)
+           <thead><tr><th style="text-align:left;text-transform:Uppercase"><h3>{{$key}}</h3></th></tr></thead>
+
+                
 
 
 
@@ -382,7 +380,6 @@
 
 
   <script>
-
   // 打开询问是否删除的模态框并设置需要删除的大修的ID
     function showDeleteModal(obj) {
         var $tds = $(obj).parent().parent().children();// 获取到所有列
@@ -395,8 +392,6 @@
             keyboard : false
         });
     }
-
-
     
     $('.bulkCreateOffer .submit').click(function(){
       $("#bulkCreateOffer").submit();
@@ -404,9 +399,6 @@
     $('.offerCheck.submit').click(function(){
       $("#offerCheck").submit();
     })
-
-
-
   </script>
   <script src="{{asset('admin/select/bootstrap-select.min.js') }}"></script>
 

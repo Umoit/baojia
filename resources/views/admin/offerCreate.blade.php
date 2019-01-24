@@ -56,7 +56,8 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 
             </select>
         </div>
-        <div class="col-md-3"> <input type="number" name="weight" class="input-sm form-control" placeholder="重量">
+        <div class="col-md-3"> 
+        <input type="number" name="weight" value="@if(Request::get('weight')){{Request::get('weight')}}@endif" class="input-sm form-control" placeholder="重量">
         </div>
         <div class="col-md-3"><button class="btn btn-sm btn-default submit" >查询</button></div>
         
