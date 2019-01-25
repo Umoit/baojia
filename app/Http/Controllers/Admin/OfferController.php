@@ -39,31 +39,69 @@ class OfferController extends Controller
     	return view('admin.offerList',compact('offers','countries','sections'));
     }
 
-    public function getCheck(Request $request){
-             $countries = Country::all();
+    // public function getCheck(Request $request){
+    //          $countries = Country::all();
 
-        //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
-    	$sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->get()->groupBy('name');
+    //     //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
+        
+    // 	$sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->get()->groupBy('name');
 
-        if (count($sec)>0) {
-            foreach ($sec as $key => $value) {
-                if ($key=='fedex') {
-                    $fedex = $value->groupBy('country_id');
 
-                }else{
-                    $sections[$key] = $value->groupBy('country_id');
-                }
+
+
+    //     if (count($sec)>0) {
+    //         foreach ($sec as $key => $value) {
+    //             if ($key=='fedex') {
+    //                 $fedex = $value->groupBy('country_id');
+
+    //             }else{
+    //                 $sections[$key] = $value->groupBy('country_id');
+    //             }
            
 
-            }
+    //         }
 
-            $sections['fedex'] = $fedex;
+    //         $sections['fedex'] = $fedex;
 
-            return view('admin.offerCheckList',compact('countries','sections'));
-        }else{
-            return view('admin.offerList',compact('countries'));
+    //         return view('admin.offerCheckList',compact('countries','sections'));
+    //     }else{
+    //         $sec = Offer::where('country_id',$request->get('country_id'))->get()->groupBy('name');
 
-        }
+
+    //         foreach ($sec as $key => $value) {
+    //             foreach ($value as $k => $v) {
+
+
+                    
+    //                 if (strpos($v['weight'],'_')||strpos($v['weight'],'+')) {
+
+    //                     $shuzi = strstr($v['weight'], 'kg', TRUE);
+    //                     $tmpArr = explode('_', $shuzi);
+                        
+    //                     $weight = (int)$request->get('weight');
+    //                     $a = (int)$tmpArr[0];
+    //                     $b = (int)$tmpArr[1];
+    //                     if ($weight>=$b||$weight<=$a) {
+    //                         $value->forget($k);
+
+    //                     }
+                     
+
+                        
+    //                 }else{
+    //                     $value->forget($k);
+                        
+    //                 }
+
+    //             }
+    //             //dd($value);
+    //             //dd($new_rs);
+                
+    //         }
+    //         return view('admin.offerCheckList',compact('countries','sections'));
+
+
+    //     }
         
 
 
@@ -71,6 +109,28 @@ class OfferController extends Controller
        
 
 
+    // }
+    
+    public function getCheck(Request $request){
+             $countries = Country::all();
+        //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
+        $sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->get()->groupBy('name');
+        if (count($sec)>0) {
+            foreach ($sec as $key => $value) {
+                if ($key=='fedex') {
+                    $fedex = $value->groupBy('country_id');
+                }else{
+                    $sections[$key] = $value->groupBy('country_id');
+                }
+           
+            }
+            $sections['fedex'] = $fedex;
+            return view('admin.offerCheckList',compact('countries','sections'));
+        }else{
+            return view('admin.offerList',compact('countries'));
+        }
+        
+       
     }
 
     public function store(Request $request){
