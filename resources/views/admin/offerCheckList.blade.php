@@ -140,7 +140,6 @@
                   </thead>
 
            @foreach ($sections as $key => $sec)
-           <thead><tr><th style="text-align:left;text-transform:Uppercase"><h4>{{$key}}</h4></th></tr></thead>
 
                 
 
@@ -160,7 +159,11 @@
                     @foreach($data as $item)
                          
                          <tr>
-                         <td>{{$item->name}}</td>
+                         @if($item->name=='fedex')
+                         <td>Fedex</td> 
+                         @else
+                         <td style="text-transform:uppercase">{{$item->name}} </td>
+                         @endif
                          <td>{{$item->name_des}}</td>
                          <td>{{App\Country::getName($data[0]->country_id)[0]}}</td>
                          <td>{{Request::get('weight')}}</td>

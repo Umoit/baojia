@@ -45,13 +45,19 @@ class OfferController extends Controller
         //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
     	$sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->get()->groupBy('name');
 
-
         if (count($sec)>0) {
             foreach ($sec as $key => $value) {
-            $sections[$key] = $value->groupBy('country_id');
-            //dd($sections);
+                if ($key=='fedex') {
+                    $fedex = $value->groupBy('country_id');
 
-        }
+                }else{
+                    $sections[$key] = $value->groupBy('country_id');
+                }
+           
+
+            }
+
+            $sections['fedex'] = $fedex;
 
             return view('admin.offerCheckList',compact('countries','sections'));
         }else{
