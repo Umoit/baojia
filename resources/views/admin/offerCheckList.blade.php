@@ -71,9 +71,10 @@
           <select name ="country_id" class="input-sm form-control w-sm  selectpicker inline v-middlec" data-live-search="true">
             @foreach($countries as $country)
 
-              <option  data-tokens="{{$country->name}}" value="{{$country->id}}" @if($country->id == Request::get('country_id'))  selected = "selected" @endif >{{$country->code}}_{{$country->name}}</option>
+              <option  data-tokens="{{$country->name}} {{Pinyin::permalink($country->name,'')}}" value="{{$country->id}}" @if($country->id == Request::get('country_id'))  selected = "selected" @endif >{{$country->code}}_{{$country->name}}</option>
                 
             @endforeach
+
 
             </select>
 
@@ -134,6 +135,7 @@
                         <th>目的地</th>
                         <th>结算重量</th>
                         <th>价格</th>
+                        <th>币种</th>
                       </tr>
 
 
@@ -168,6 +170,7 @@
                          <td>{{App\Country::getName($data[0]->country_id)[0]}}</td>
                          <td>{{Request::get('weight')}}</td>
                          <td>{{round($item->price,2)}}</td>
+                         <td>RMB</td>
 
                          </tr>
                          

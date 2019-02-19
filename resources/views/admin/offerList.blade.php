@@ -75,7 +75,7 @@
           <select name ="country_id" class="input-sm form-control w-sm  selectpicker inline v-middlec" data-live-search="true">
             @foreach($countries as $country)
 
-              <option  data-tokens="{{$country->name}}" value="{{$country->id}}" @if($country->id == Request::get('country_id'))  selected = "selected" @endif >{{$country->code}}_{{$country->name}}</option>
+              <option  data-tokens="{{$country->name}} {{Pinyin::permalink($country->name,'')}}" value="{{$country->id}}" @if($country->id == Request::get('country_id'))  selected = "selected" @endif >{{$country->code}}_{{$country->name}}</option>
                 
             @endforeach
 

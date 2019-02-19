@@ -187,7 +187,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        Overtrue\LaravelPinyin\ServiceProvider::class,
 
     ],
 
@@ -246,7 +246,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        //拼音转换
+        'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class,
 
     ],
 
