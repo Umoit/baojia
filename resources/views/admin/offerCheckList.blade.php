@@ -116,7 +116,7 @@
     <div class="table-responsive">
 
 
-      <table class="table table-striped b-t b-light">
+      <table class="table  b-t b-light">
      
 
 

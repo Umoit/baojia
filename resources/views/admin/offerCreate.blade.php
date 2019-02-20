@@ -81,7 +81,7 @@ text-overflow:ellipsis;            /* 当对象内文本溢出时显示省略标
 
     </div>
     <div class="table-responsive">
-      <table class="table table-striped b-t b-light">
+      <table class="table  b-t b-light">
         <thead>
 
         <tr>
