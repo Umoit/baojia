@@ -112,14 +112,13 @@ class OfferController extends Controller
     // }
     
     public function getCheck(Request $request){
-//         $pinyin = app('pinyin');
-// echo $pinyin->sentence('带着希望去旅行，比到达终点更美好');exit();
+        
 
              $countries = Country::all();
         //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
         $sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->get()->groupBy('name'); 
 
-        echo "string";exit();
+
         if (count($sec)>0) {
             foreach ($sec as $key => $value) {
                 if ($key=='fedex') {

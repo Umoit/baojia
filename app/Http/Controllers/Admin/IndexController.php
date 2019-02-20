@@ -21,7 +21,12 @@ class IndexController extends Controller
     }
 
     public function getLogin(){
-    	return view('admin.login');
+      if (Auth::guard('admin')->check()) {
+        return  view('admin.dashboard');
+      }else{
+        return view('admin.login');
+      }
+    	
     }
 
     public function postLogin(Request $request){
