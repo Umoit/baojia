@@ -116,9 +116,9 @@ class OfferController extends Controller
 
              $countries = Country::all();
         //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
-        $sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->get()->groupBy('name'); 
+        $sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->orderBy('name')->get()->groupBy('name'); 
 
-
+        
         if (count($sec)>0) {
             foreach ($sec as $key => $value) {
                 if ($key=='fedex') {
@@ -129,6 +129,7 @@ class OfferController extends Controller
            
             }
             $sections['fedex'] = $fedex;
+            //dd($sections);
             return view('admin.offerCheckList',compact('countries','sections'));
         }else{
             return view('admin.offerList',compact('countries'));
