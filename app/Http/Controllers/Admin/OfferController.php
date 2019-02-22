@@ -114,9 +114,16 @@ class OfferController extends Controller
     public function getCheck(Request $request){
         
 
-             $countries = Country::all();
+        $countries = Country::all();
         //$sections = DB::table('countries')->join('offers','countries.id','=',$request->get('country_id'))->get()->groupBy('country_id');
-        $sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->orderBy('name')->get()->groupBy('name'); 
+        
+        if ($request->get('weight')) {
+            $sec = Offer::where('country_id',$request->get('country_id'))->where('weight',$request->get('weight').'kg')->orderBy('name')->get()->groupBy('name'); 
+            
+        }else{
+            $sec = Offer::where('country_id',$request->get('country_id'))->orderBy('name')->get()->groupBy('name'); 
+        }
+        
 
         
         if (count($sec)>0) {
@@ -137,6 +144,29 @@ class OfferController extends Controller
         
        
     }
+
+    public function edit(Offer $offer){
+        return view('admin.offerEdit',compact('offer'));
+    }
+
+    public function update(Request $request,$id){
+        $data = $this->validate($request, [
+            'name'=>'required',
+            'weight'=> 'required',
+            'price'=> 'required',
+        ]);
+       
+
+
+
+
+        $offer = Offer::findOrFail($id);
+        $offer->update($data);
+        return redirect()->back()->with(['flash_success' => '更新成功!']);
+
+        
+    }
+
 
     public function store(Request $request){
         $arr['country_id'] = $request->post('country_id');

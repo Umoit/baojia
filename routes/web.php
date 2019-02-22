@@ -58,6 +58,7 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::post('offer/import', 'Admin\ExcelController@offerImport')->name('offer.import');
 
 	Route::get('offerCheck/{data?}', 'Admin\OfferController@getCheck')->name('offer.check');
+	//Route::get('offerEdit/{data?}', 'Admin\OfferController@getOfferCheck')->name('offer.edit');
 
 	
 

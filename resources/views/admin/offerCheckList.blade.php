@@ -136,6 +136,7 @@
                         <th>结算重量</th>
                         <th>价格</th>
                         <th>币种</th>
+                        <th>操作</th>
                       </tr>
 
 
@@ -171,6 +172,7 @@
                          <td>{{Request::get('weight')}}</td>
                          <td>{{round($item->price,2)}}</td>
                          <td>RMB</td>
+                         <td><a class="btn btn-sm btn-info submit" href="{{route('offer.edit',$item->id)}}">修改</a></td>
 
                          </tr>
                          
