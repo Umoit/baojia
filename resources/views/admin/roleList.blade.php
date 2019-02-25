@@ -11,7 +11,7 @@
 <div class="bg-light lter b-b wrapper-md">
     <div class="row">
          <div class="col-sm-6 col-xs-12">
-          <h1 class="m-n font-thin h3">用户管理</h1>
+          <h1 class="m-n font-thin h3">会员管理</h1>
           </div>
 
 
@@ -26,9 +26,9 @@
       <div class="col-xs-12 col-md-4">
 
         <div class="panel panel-default">
-        <div class="panel-heading ">添加用户</div>
+        <div class="panel-heading ">添加角色</div>
         <div class="panel-body">
-          <form class="form-horizontal"  action="{{route('user.store')}}" method="post" role="form">
+          <form class="form-horizontal"  action="{{route('role.store')}}" method="post" role="form">
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">名称</label>
@@ -38,19 +38,14 @@
             </div>
             
             <div class="form-group">
-                <label class="col-sm-3 control-label">邮件</label>
+                <label class="col-sm-3 control-label">分类</label>
                 <div class="col-sm-9">
-                    <input type="text" name="email" class="form-control" placeholder="邮件">
+                    <input type="text" name="guard_name" class="form-control" placeholder="分类">
                 </div>
             </div>
 
 
-            <div class="form-group">
-                <label class="col-sm-3 control-label">密码</label>
-                <div class="col-sm-9">
-                <input type="text" name="password" class="form-control" placeholder="密码">
-                </div>
-            </div>
+    
 
 
 
@@ -71,7 +66,7 @@
       </div>
       <div class="col-xs-12 col-md-8">
         <div class="panel panel-default">
-    <div class="panel-heading">分类列表</div>
+    <div class="panel-heading">角色列表</div>
     <div class="row wrapper">
       <div class="col-sm-5 m-b-xs">
         <select class="input-sm form-control w-sm inline v-middle">
@@ -103,7 +98,7 @@
               </label>
             </th>
             <th>名称</th>
-            <th>邮箱</th>
+            <th>分类</th>
             <th>操作</th>
     
           </tr>
@@ -111,17 +106,17 @@
         <tbody>
           
           
-           @foreach ($users as $data)
+           @foreach ($roles as $data)
 
               <tr>
               <td>{{$data->id}}</td>
               <td>{{$data->name}}</td>
-              <td>{{$data->email}}</td>
+              <td>{{$data->guard_name}}</td>
             
               <td>
-                <a href="{{route('user.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
+                <a href="{{route('role.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
                 
-                 <a onclick="showDeleteModal(this)"  data="{{route('user.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
+                 <a onclick="showDeleteModal(this)"  data="{{route('role.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
               </td>
             </tr>
             @endforeach

@@ -28,7 +28,7 @@
         <div class="panel panel-default">
         <div class="panel-heading ">添加用户</div>
         <div class="panel-body">
-          <form class="form-horizontal"  action="{{route('user.store')}}" method="post" role="form">
+          <form class="form-horizontal"  action="{{route('permission.store')}}" method="post" role="form">
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">名称</label>
@@ -111,7 +111,7 @@
         <tbody>
           
           
-           @foreach ($users as $data)
+           @foreach ($permissions as $data)
 
               <tr>
               <td>{{$data->id}}</td>
@@ -119,9 +119,9 @@
               <td>{{$data->email}}</td>
             
               <td>
-                <a href="{{route('user.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
+                <a href="{{route('permission.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
                 
-                 <a onclick="showDeleteModal(this)"  data="{{route('user.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
+                 <a onclick="showDeleteModal(this)"  data="{{route('permission.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
               </td>
             </tr>
             @endforeach

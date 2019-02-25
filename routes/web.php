@@ -31,6 +31,8 @@ Route::get('logout', 'UserController@logout')->name('logout');
 
 
 
+
+
 //文章
 Route::get('article/{article}','ArticleController@show')->name('articleShow');
 
@@ -74,6 +76,13 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::resource('user', 'Admin\UserController');	
 	Route::get('user/{id}/delete', 'Admin\UserController@delete')->name('user.delete');	
 	//Route::post('user/login', 'UserController@postLogin')->name('user.login');	
+
+	//权限
+	Route::resource('role','Admin\RoleController');
+	Route::resource('permission','Admin\PermissionController');
+	Route::get('role/{id}/delete', 'Admin\RoleController@delete')->name('role.delete');	
+	
+
 
 	
 

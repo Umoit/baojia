@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {   
 
     public function __construct(){
-        $this->middleware('check.admin', ['except' => ['show','index']]);
+        $this->middleware('check.admin', ['except' => ['show','index','test']]);
     }
 
     public function index(){
@@ -33,7 +35,6 @@ class UserController extends Controller
 
         $data['password'] = bcrypt($request->post('password'));
 
-
          User::create($data);
 
 
@@ -52,6 +53,12 @@ class UserController extends Controller
         return redirect()->back()->with(['flash_success' => '删除成功!']);
 
 
+    }
+
+    public function test(){
+        $role = Role::create(['guard_name' => 'admin','name' => 'writer']);
+        $permission = Permission::create(['name' => 'edit articles']);
+        echo "888";
     }
 
 }
