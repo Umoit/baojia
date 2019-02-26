@@ -12,7 +12,10 @@ use Spatie\Permission\Models\Permission;
 class RoleController extends Controller
 {
     
+     public function __construct(){
+        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
 
+    }
 
 
 
@@ -33,6 +36,19 @@ class RoleController extends Controller
         return redirect()->back()->with(['flash_success' => '添加成功!']);
 
 
+
+    }
+
+    public function edit(Role $role){
+        $permissions = Permission::all()->toArray();
+        return view('admin.roleEdit',compact('role','permissions'));
+    }
+
+    public function update(Request $request,$id){
+        //dd($request['permissions']);
+        $role = Role::find($id);
+        $role->syncPermissions($request['permissions']);
+        return redirect()->back()->with(['flash_success' => '更新成功!']);
 
     }
 

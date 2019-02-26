@@ -10,6 +10,10 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
+	 public function __construct(){
+        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+
+    }
     public function index(){
     	$permissions = Permission::all();
     	return view('admin.permissionList',compact('permissions'));
@@ -29,6 +33,24 @@ class PermissionController extends Controller
 
 
     }
+
+    public function edit(Permission $permission){
+        return view('admin.permissionEdit',compact('permission'));
+    }
+
+    public function update(Request $request,$id){
+        //dd($request['permissions']);
+        $permission = Permission::find($id);
+        $data = $this->validate($request, [
+            'name'=>'required',
+            'guard_name'=> 'required',
+
+        ]);
+        $permission->update($data);
+        return redirect()->back()->with(['flash_success' => '更新成功!']);
+
+    }
+
 
     public function delete($id){
         $data = Permission::findOrFail($id);

@@ -9,11 +9,15 @@ use App\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+use Illuminate\Support\Facades\Gate;
+
+
 class UserController extends Controller
 {   
 
     public function __construct(){
-        $this->middleware('check.admin', ['except' => ['show','index','test']]);
+        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+
     }
 
     public function index(){
@@ -52,6 +56,32 @@ class UserController extends Controller
         //return response()->json(['data'=>'删除成功！']);
         return redirect()->back()->with(['flash_success' => '删除成功!']);
 
+
+    }
+
+    public function edit(User $user){
+        $role = Role::get()->pluck('name', 'name');
+        //$user->assignRole('writer');
+       
+        //dd($user->roles()->pluck('name')[0]);
+        $roles = Role::all();
+        return view('admin.userEdit',compact('user','roles'));
+    }
+
+    public function update(Request $request,$id){
+
+      
+        $user = User::findOrFail($id);
+        $data = $this->validate($request, [
+            'name'=>'required',
+            'email'=> 'required'
+
+        ]);
+        $user->update($data);
+
+        $user->syncRoles($request['role']);
+
+        return redirect()->back()->with(['flash_success' => '删除成功!']);
 
     }
 

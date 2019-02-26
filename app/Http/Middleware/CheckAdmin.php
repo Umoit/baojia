@@ -15,12 +15,12 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::guard('admin')->check() )
+        if ( Auth::guard('admin')->check() ||Auth::guard('web')->check())
         {
 
             return $next($request);
         }
 
-        return redirect(route('admin.login'));
+        return back()->withErrors(['请登录']);
     }
 }

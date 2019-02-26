@@ -81,6 +81,7 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::resource('role','Admin\RoleController');
 	Route::resource('permission','Admin\PermissionController');
 	Route::get('role/{id}/delete', 'Admin\RoleController@delete')->name('role.delete');	
+	Route::get('permission/{id}/delete', 'Admin\PermissionController@delete')->name('permission.delete');	
 	
 
 

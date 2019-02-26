@@ -12,21 +12,21 @@ use Event;
 use Pinyin;
 class OfferController extends Controller
 {
-    public function __construct(){
-        $this->middleware('check.admin');
-    }
+     public function __construct(){
+        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','getCheck']]);
 
+    }
     public function index(){
-        $offers = Offer::orderBy('id', 'desc')->paginate(50);
+        //$offers = Offer::orderBy('id', 'desc')->paginate(50);
 
 
         //$sections = Offer::select(['weight','price'])->distinct()->get();
         
-        $sec = DB::table('countries')->join('offers','countries.id','=','offers.country_id')->get()->groupBy('name');
+        //$sec = DB::table('countries')->join('offers','countries.id','=','offers.country_id')->get()->groupBy('name');
 
-        foreach ($sec as $key => $value) {
-            $sections[$key] = $value->groupBy('country_id');
-        }
+        // foreach ($sec as $key => $value) {
+        //     $sections[$key] = $value->groupBy('country_id');
+        // }
         
         
         

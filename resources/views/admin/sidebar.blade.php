@@ -109,7 +109,7 @@
 
              
 
-               <li class="{{ Request::is('admin/user') ? 'active' : '' }} {{ Request::is('admin/role') ? 'active' : '' }}">
+               <li class="{{ Request::is('admin/permission*') ? 'active' : '' }} {{ Request::is('admin/user*') ? 'active' : '' }} {{ Request::is('admin/role*') ? 'active' : '' }}">
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -125,19 +125,19 @@
                     </a>
                   </li>
 
-                   <li class="{{ Request::is('admin/user') ? 'active' : '' }}">
+                   <li class="{{ Request::is('admin/user*') ? 'active' : '' }}">
                     <a href="{{route('user.index')}}">
                       <span>会员列表</span>
                     </a>
                   </li>
 
-                    <li class="{{ Request::is('admin/role') ? 'active' : '' }}">
+                    <li class="{{ Request::is('admin/role*') ? 'active' : '' }}">
                     <a href="{{route('role.index')}}">
                       <span>角色列表</span>
                     </a>
                   </li>
 
-                    <li class="{{ Request::is('admin/permission') ? 'active' : '' }}">
+                    <li class="{{ Request::is('admin/permission*') ? 'active' : '' }}">
                     <a href="{{route('permission.index')}}">
                       <span>权限列表</span>
                     </a>

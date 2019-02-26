@@ -31,6 +31,8 @@ class UserController extends Controller
             'captcha.required' => '验证码不能为空',
             'captcha.captcha' => '验证码不正确',
         ]);
+
+
     	if (Auth::guard('web')->attempt(['email'=>$request->email,'password'=>$request->password])) {
    			return redirect()->intended(route('admin.dashboard'));
    		}else{

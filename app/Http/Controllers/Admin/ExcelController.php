@@ -16,8 +16,8 @@ use App\Jobs\ProcessOffer;
 class ExcelController extends Controller
 {
     public function __construct(){
-        //
-        $this->middleware('check.admin');
+        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','getCheck']]);
+
     }
     
 

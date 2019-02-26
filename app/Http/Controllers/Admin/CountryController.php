@@ -10,8 +10,9 @@ use App\Country;
 class CountryController extends Controller
 {
 
-    public function __construct(){
-        $this->middleware('check.admin');
+     public function __construct(){
+        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+
     }
 
 
