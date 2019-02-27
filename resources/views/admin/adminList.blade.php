@@ -28,7 +28,7 @@
         <div class="panel panel-default">
         <div class="panel-heading ">添加用户</div>
         <div class="panel-body">
-          <form class="form-horizontal"  action="{{route('user.store')}}" method="post" role="form">
+          <form class="form-horizontal"  action="{{route('admin.store')}}" method="post" role="form">
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">名称</label>
@@ -36,19 +36,28 @@
                     <input type="text" name="name" class="form-control" placeholder="名称">
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label class="col-sm-3 control-label">邮件</label>
                 <div class="col-sm-9">
                     <input type="text" name="email" class="form-control" placeholder="邮件">
                 </div>
             </div>
+            
+            <div class="form-group">
+                <label class="col-sm-3 control-label">电话</label>
+                <div class="col-sm-9">
+                    <input type="text" name="phone" class="form-control" placeholder="电话号码">
+                </div>
+            </div>
+
+            
 
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">密码</label>
                 <div class="col-sm-9">
-                <input type="text" name="password" class="form-control" placeholder="密码">
+                <input type="password" name="password" class="form-control" placeholder="密码">
                 </div>
             </div>
 
@@ -103,6 +112,8 @@
               </label>
             </th>
             <th>名称</th>
+            <th>电话</th>
+
             <th>邮箱</th>
             <th>操作</th>
     
@@ -111,17 +122,18 @@
         <tbody>
           
           
-           @foreach ($users as $data)
+           @foreach ($admins as $data)
 
               <tr>
               <td>{{$data->id}}</td>
               <td>{{$data->name}}</td>
+              <td>{{$data->phone}}</td>
               <td>{{$data->email}}</td>
             
               <td>
-                <a href="{{route('user.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
+                <a href="{{route('admin.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
                 
-                 <a onclick="showDeleteModal(this)"  data="{{route('user.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
+                 <a onclick="showDeleteModal(this)"  data="{{route('admin.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
               </td>
             </tr>
             @endforeach

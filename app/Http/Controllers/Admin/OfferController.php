@@ -13,7 +13,8 @@ use Pinyin;
 class OfferController extends Controller
 {
      public function __construct(){
-        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','getCheck']]);
+        
+        $this->middleware(['check.admin','check.permission']);
 
     }
     public function index(){

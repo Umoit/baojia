@@ -28,19 +28,26 @@
         <div class="panel panel-default">
         <div class="panel-heading ">编辑角色</div>
         <div class="panel-body">
-          <form class="form-horizontal"  action="{{route('user.update',$user->id)}}" method="post" user="form">
+          <form class="form-horizontal"  action="{{route('admin.update',$admin->id)}}" method="post" admin="form">
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">名称</label>
                 <div class="col-sm-9">
-                    <input type="text" name="name" class="form-control" value="{{$user->name}}">
+                    <input type="text" name="name" class="form-control" value="{{$admin->name}}">
                 </div>
             </div>
             
             <div class="form-group">
                 <label class="col-sm-3 control-label">邮箱</label>
                 <div class="col-sm-9">
-                    <input type="text" name="email" class="form-control" value="{{$user->email}}">
+                    <input type="text" name="email" class="form-control" value="{{$admin->email}}">
+                </div>
+            </div>
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">电话</label>
+                <div class="col-sm-9">
+                    <input type="text" name="phone" class="form-control" value="{{$admin->phone}}">
                 </div>
             </div>
 
@@ -55,8 +62,8 @@
                       <div class="radio ">
                         <label class="i-checks">
 
-                          @if(isset($user->roles()->pluck('name')[0]))
-                          <input type="radio"  name="role" value="{{$data->name}}" @if($data->name == $user->roles()->pluck('name')[0]) checked @endif >
+                          @if(isset($admin->roles()->pluck('name')[0]))
+                          <input type="radio"  name="role" value="{{$data->name}}" @if($data->name == $admin->roles()->pluck('name')[0]) checked @endif >
                           @else
                           <input type="radio"  name="role" value="{{$data->name}}">
                           @endif

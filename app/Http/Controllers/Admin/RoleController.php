@@ -13,7 +13,9 @@ class RoleController extends Controller
 {
     
      public function __construct(){
-        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+       // $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+        $this->middleware(['check.admin','check.permission']);
+       
 
     }
 
@@ -40,7 +42,11 @@ class RoleController extends Controller
     }
 
     public function edit(Role $role){
-        $permissions = Permission::all()->toArray();
+        $permissions = Permission::all();
+
+        // $a = $role->permissions()->pluck('name')->toArray();;
+        // dd($a);
+        // dd($permissions);
         return view('admin.roleEdit',compact('role','permissions'));
     }
 

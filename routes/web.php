@@ -45,6 +45,8 @@ Route::get('admin/login','Admin\IndexController@getLogin');
 Route::post('admin/login','Admin\IndexController@postLogin')->name('admin.login');
 
 Route::group(['prefix' => 'admin'],function(){
+	Route::resource('admin', 'Admin\AdminController');
+	Route::get('admin/{id}/delete', 'Admin\AdminController@delete')->name('admin.delete');	
 
 	Route::get('logout','Admin\IndexController@logout')->name('admin.logout');
 	
@@ -78,6 +80,8 @@ Route::group(['prefix' => 'admin'],function(){
 	//Route::post('user/login', 'UserController@postLogin')->name('user.login');	
 
 	//权限
+	Route::get('permission/autoCreate','Admin\PermissionController@autoCreate')->name('permission.autoCreate');
+	
 	Route::resource('role','Admin\RoleController');
 	Route::resource('permission','Admin\PermissionController');
 	Route::get('role/{id}/delete', 'Admin\RoleController@delete')->name('role.delete');	

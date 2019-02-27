@@ -218,10 +218,10 @@
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="img/a0.jpg" alt="...">
+                <!-- <img src="img/a0.jpg" alt="..."> -->
                 <i class="on md b-white bottom"></i>
               </span>
-              <span class="hidden-sm hidden-md">John.Smith</span> <b class="caret"></b>
+              <span class="hidden-sm hidden-md">{{ isset(Auth::guard('admin')->user()->name) ? Auth::guard('admin')->user()->name : 未登录 }}</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
@@ -229,6 +229,8 @@
          
               <li class="divider"></li>
               <li>
+                <a ui-sref="access.signin" href="#">个人设置</a>
+
                 <a ui-sref="access.signin" href="{{route('admin.logout')}}">退出</a>
               </li>
             </ul>

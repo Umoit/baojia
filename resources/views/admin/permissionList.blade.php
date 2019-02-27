@@ -52,6 +52,9 @@
                 <div class="col-sm-offset-3 col-sm-9">
                     <button type="submit" class="btn btn-primary ">添加</button>
                     <button type="reset" class="btn btn-default">重置</button>
+
+                    <a href="{{route('permission.autoCreate')}}" class="btn btn-success">根据路由生成</a>
+
                 </div>
             </div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

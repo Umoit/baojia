@@ -11,7 +11,9 @@ class CountryController extends Controller
 {
 
      public function __construct(){
-        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+        
+        $this->middleware(['check.admin','check.permission']);
+        
 
     }
 
@@ -23,6 +25,7 @@ class CountryController extends Controller
     }
 
     public function edit(Country $country){
+        
         return view('admin.countryEdit',compact('country'));
 
     }

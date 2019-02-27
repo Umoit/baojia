@@ -109,25 +109,25 @@
 
              
 
-               <li class="{{ Request::is('admin/permission*') ? 'active' : '' }} {{ Request::is('admin/user*') ? 'active' : '' }} {{ Request::is('admin/role*') ? 'active' : '' }}">
+               <li class="{{ Request::is('admin/permission*') ? 'active' : '' }} {{ Request::is('admin/admin*') ? 'active' : '' }} {{ Request::is('admin/role*') ? 'active' : '' }}">
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
                   <i class="fa fa-list"></i>
-                  <span>会员系统</span>
+                  <span>管理员系统</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
                     <a href="">
-                      <span>会员系统</span>
+                      <span>管理员系统</span>
                     </a>
                   </li>
 
-                   <li class="{{ Request::is('admin/user*') ? 'active' : '' }}">
-                    <a href="{{route('user.index')}}">
-                      <span>会员列表</span>
+                   <li class="{{ Request::is('admin/admin*') ? 'active' : '' }}">
+                    <a href="{{route('admin.index')}}">
+                      <span>管理员列表</span>
                     </a>
                   </li>
 

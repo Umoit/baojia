@@ -7,11 +7,14 @@ use App\Http\Controllers\Controller;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Route;
 
 class PermissionController extends Controller
 {
 	 public function __construct(){
-        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+        //$this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+        $this->middleware(['check.admin','check.permission']);
+        
 
     }
     public function index(){
@@ -60,6 +63,24 @@ class PermissionController extends Controller
         //return response()->json(['data'=>'删除成功！']);
         return redirect()->back()->with(['flash_success' => '删除成功!']);
 
+
+    }
+
+    public function autoCreate(){
+        $routes = Route::getRoutes();
+
+        foreach ($routes as $value) {
+            //echo $value->getName()."<br>";
+           
+            if($value->getName()=='debugbar.*'||$value->getName()==''){
+                continue;
+            }
+
+            $data['name'] = $value->getName();
+            $data['guard_name'] = 'admin';
+            Permission::updateOrCreate($data);
+        }
+        return redirect()->back()->with(['flash_success' => '自动添加成功!']);
 
     }
 

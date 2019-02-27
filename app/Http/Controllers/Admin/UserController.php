@@ -9,14 +9,13 @@ use App\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-use Illuminate\Support\Facades\Gate;
 
 
 class UserController extends Controller
 {   
 
     public function __construct(){
-        $this->middleware(['check.admin','role:admin'], ['except' => ['show','index','test']]);
+        $this->middleware(['check.admin','check.permission'], ['except' => ['show','index','test']]);
 
     }
 
