@@ -16,7 +16,8 @@ class IndexController extends Controller
 
     //首页
     public function dashboard(){
-      return  view('admin.dashboard');
+      //return  view('admin.dashboard');
+      return redirect()->action('Admin\OfferController@index');
 
     }
 
