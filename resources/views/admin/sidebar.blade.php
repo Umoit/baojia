@@ -106,6 +106,35 @@
                 </ul>
               </li>
 
+               <li class="{{ Request::is('admin/waybill*') ? 'active' : '' }} {{ Request::is('admin/wbitem*') ? 'active' : '' }}">
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <i class="fa fa-list"></i>
+                  <span>货单跟踪</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                    <a href="{{route('waybill.index')}}">
+                      <span>货单列表</span>
+                    </a>
+                  </li>
+                  <li class="{{ Request::is('admin/waybill*') ? 'active' : '' }} {{ Request::is('admin/wbitem*') ? 'active' : '' }}">
+                    <a href="{{route('waybill.index')}}">
+                      <span>货单列表</span>
+                    </a>
+                  </li>
+ 
+              
+               
+
+                      
+                </ul>
+              </li>
+
+
 
              
 

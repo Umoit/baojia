@@ -87,10 +87,18 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::get('role/{id}/delete', 'Admin\RoleController@delete')->name('role.delete');	
 	Route::get('permission/{id}/delete', 'Admin\PermissionController@delete')->name('permission.delete');	
 	
+	//货单
+	Route::resource('waybill','Admin\WaybillController');
+	Route::get('waybill/{id}/delete', 'Admin\WaybillController@delete')->name('waybill.delete');
 
 
+
+	Route::post('wbitem/add', 'Admin\WaybillController@itemStore')->name('wbitem.store');
+
+
+	Route::get('wbitem/{id}', 'Admin\WaybillController@itemEdit')->name('wbitem.edit');
+	Route::post('wbitem/{id}', 'Admin\WaybillController@itemUpdate')->name('wbitem.update');
+	Route::get('wbitem/{id}/delete', 'Admin\WaybillController@itemDelete')->name('wbitem.delete');	
 	
-
-
 
 });
