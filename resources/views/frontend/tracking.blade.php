@@ -75,7 +75,6 @@
               <th>城市</th>
               <th>Q of P</th>
               <th>注意</th>
-              <th>操作</th>
             </tr>
           </thead>
           <tbody >
@@ -88,8 +87,7 @@
               <td>{{$data->city}}</td>
               <td>{{$data->qofp}}</td>
               <td>{{$data->notice}}</td>
-              <td> <a href="{{route('wbitem.edit',$data->id)}}"><button type="button" class="btn btn-info btn-xs">编辑</button></a>
-                 <a onclick="showDeleteModal(this)"  data="{{route('wbitem.delete',$data->id)}}"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
+              
             </tr>
             @endforeach
           </tbody>
