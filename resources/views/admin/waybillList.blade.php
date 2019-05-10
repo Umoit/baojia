@@ -107,7 +107,7 @@
               <tr>
               <td>{{$data->id}}</td>
               <td>{{$data->track_no}}</td>
-              <td>{{$data->admin($data->id)}}</td>
+              <td>{{$data->admin($data->admin_id)}}</td>
               <td>{{$data->created_at}}</td>
             
               <td>
