@@ -29,7 +29,8 @@ Route::post('register','UserController@postRegister')->name('post.register');
 Route::get('logout', 'UserController@logout')->name('logout');
 
 
-
+Route::get('tracking','TrackingController@index')->name('tracking');
+Route::post('tracking','TrackingController@postCheck');
 
 
 

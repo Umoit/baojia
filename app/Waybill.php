@@ -14,4 +14,9 @@ class Waybill extends Model
     public function admin($admin_id){
     	return Admin::find($admin_id)->name;
     }
+
+
+    public function id($track_no){
+    	return Waybill::where('track_no',$track_no)->value('id');
+    }
 }
