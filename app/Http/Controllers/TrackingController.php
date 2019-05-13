@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Waybill;
 use App\Wbitem;
+use DB;
 
 class TrackingController extends Controller
 {
@@ -27,7 +28,7 @@ class TrackingController extends Controller
     	}
 
     	$waybill = Waybill::find($id);
-    	$wbitems = Wbitem::where('wb_id',$id)->get();
+    	$wbitems = DB::table('wb_items')->where('wb_id',$id)->get();
     	return view('frontend.tracking',compact('wbitems','waybill'));
     	
     }
