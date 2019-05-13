@@ -45,11 +45,8 @@
       </div>
       
     </form>
-
-
-  </div>
-
-  <div class="col-md-12">
+    
+    <div class="col-md-12">
       @if ($errors->any())
          @foreach ($errors->all() as $error)
             
@@ -60,6 +57,10 @@
         @endforeach
       @endif
   </div>
+  
+  </div>
+
+  
   
   @isset($waybill)
   <div class="col-xs-12 col-md-12"  >
