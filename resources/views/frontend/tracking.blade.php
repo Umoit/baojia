@@ -27,7 +27,7 @@
 
 <div class="container  w-auto-xs">
   <a href class="navbar-brand block m-t">货单追踪</a>
-  <div class="m-b-lg">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
    
     <form method="post">
       <div class="form-group">
@@ -102,6 +102,13 @@
 
 </div>
 
+<style type="text/css">
+.w-auto-xs .btn ,  .w-auto-xs .form-control{
+  line-height: 2;
+  height: auto;
+}
+
+</style>
 
 </body>
 
