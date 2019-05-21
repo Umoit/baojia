@@ -43,7 +43,7 @@
     <form method="post">
       <div class="form-group">
         <div class="input-group">
-          <div class="input-group-addon" style="padding:0px"><img height="50px;" src="/frontend/img/plane.jpg"></div>
+          <div class="input-group-addon" style="padding:0px;background:#fff"><img  src="/frontend/img/plane.jpg"></div>
           <input type="text" name="track_no" class="form-control">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
            <span class="input-group-btn">
