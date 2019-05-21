@@ -22,21 +22,32 @@
 </head>
 
 <body>
-<div class="app app-header-fixed ">
+<div class="app app-header-fixed " >
   
 
-<div class="container  w-auto-xs">
-  <a href class="navbar-brand block m-t">货单追踪</a>
+<div class="container  w-auto-xs" style="padding-top:50px;">
+  <div class="col-md-6 col-md-offset-3">
+    <table>
+      <tr>
+      <td><img height="50px;" src="/frontend/img/f2_logo.png"></td>
+      <td style="padding-left:20px;font-size:15px">http://www.gzxlgj.com<br>广州市鑫磊国际有限公司</td>
+      <td style="padding-left:20px;font-size:15px"><br>电话:13925051891</td>
+      </tr>
+
+    </table>
+  </div>
+
+
   <div class="col-md-6 col-md-offset-3 col-xs-12">
    
     <form method="post">
       <div class="form-group">
         <div class="input-group">
-          <div class="input-group-addon">Track No</div>
+          <div class="input-group-addon" style="padding:0px"><img height="50px;" src="/frontend/img/plane.jpg"></div>
           <input type="text" name="track_no" class="form-control">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
            <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary" width="50%;">Check</button>
+                <button type="submit" class="btn" width="50%;" style="background:#4baf4d;color:#fff">货单追踪</button>
               </span>
         </div>
 
@@ -105,7 +116,7 @@
 
 <style type="text/css">
 .w-auto-xs .btn ,  .w-auto-xs .form-control{
-  line-height: 2;
+  line-height: 2.8;
   height: auto;
 }
 
