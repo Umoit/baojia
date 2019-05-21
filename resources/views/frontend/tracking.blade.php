@@ -26,7 +26,7 @@
   
 
 <div class="container  w-auto-xs" style="padding-top:50px;">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3" style="padding-bottom:10px;">
     <table>
       <tr>
       <td><img height="50px;" src="/frontend/img/f2_logo.png"></td>
@@ -38,7 +38,7 @@
   </div>
 
 
-  <div class="col-md-6 col-md-offset-3 col-xs-12">
+  <div class="col-md-6 col-md-offset-3 col-xs-12" >
    
     <form method="post">
       <div class="form-group">
