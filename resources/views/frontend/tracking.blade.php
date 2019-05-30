@@ -30,7 +30,7 @@
     <table>
       <tr>
       <td><img height="50px;" src="/frontend/img/f2_logo.png"></td>
-      <td style="padding-left:20px;font-size:15px">http://www.gzxlgj.com<br>广州市鑫磊国际有限公司</td>
+      <td style="padding-left:20px;font-size:15px"><a href="http://www.gzxlgj.com"> http://www.gzxlgj.com<a><br>广州市鑫磊国际有限公司</td>
       <td style="padding-left:20px;font-size:15px"><br>电话:13925051891</td>
       </tr>
 
